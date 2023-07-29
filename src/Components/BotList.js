@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const BotList = () => {
+const BotList = () => {
   const [botList, setBotList] = useState([]);
 
   useEffect(() => {
@@ -17,12 +17,12 @@ export const BotList = () => {
       <ul>
         {botList.map((bot) => (
           <li key={bot.id}>
-            <Link to={`/bots/${bot.id}`} exact>
-              {bot.name}
-            </Link>
+            <Link to={`/bots/${bot.id}`}>{bot.name}</Link>
           </li>
         ))}
       </ul>
     </>
   );
 };
+
+export default BotList;

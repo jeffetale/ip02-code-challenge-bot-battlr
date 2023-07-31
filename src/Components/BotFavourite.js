@@ -1,31 +1,20 @@
-import React, { useState } from "react";
+// src/Components/BotFavourite.js
+import React from "react";
+import BotCard from "./BotCard";
 
-const BotFavourite = () => {
-  const [favouriteBots, setFavouritebots] = useState([]);
-
-  const addToFavourites = (bot) => {
-    setFavouritebots([...favouriteBots, bot]);
-  };
-
-  const removeBotFromFavouties = (botId) => {
-    setFavouritebots(favouriteBots.filter((bot) => bot.id !== botId));
-  };
-
+function BotFavourite({ favouriteBots, onRemoveFromFavourites }) {
   return (
     <div>
       <h2>Your Bot Army</h2>
-      <ul>
-        {favouriteBots.map((bot) => (
-          <li key={bot.id}>
-            {bot.name}
-            <button onClick={() => removeBotFromFavouties(bot.id)}>
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
+      {favouriteBots.map((bot) => (
+        <BotCard
+          key={bot.id}
+          bot={bot}
+          onRemoveFromFavourites={onRemoveFromFavourites}
+        />
+      ))}
     </div>
   );
-};
+}
 
 export default BotFavourite;

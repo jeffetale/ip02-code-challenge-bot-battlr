@@ -1,28 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// src/Components/BotList.js
+import React from "react";
+import BotCard from "./BotCard";
 
-const BotList = () => {
-  const [botList, setBotList] = useState([]);
-
-  useEffect(() => {
-    fetch("https://trendsserver.onrender.com/bots")
-      .then((r) => r.json())
-      .then((data) => setBotList(data))
-      .catch((error) => console.error("Error retrieving data", error));
-  }, []);
-
+function BotList({ bots, onAddToFavourites }) {
   return (
-    <>
+    <div>
       <h2>Bot Collection</h2>
-      <ul>
-        {botList.map((bot) => (
-          <li key={bot.id}>
-            <Link to={`/bots/${bot.id}`}>{bot.name}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
+      {bots.map((bot) => (
+        <BotCard key={bot.id} bot={bot} onAddToFavourites={onAddToFavourites} />
+      ))}
+    </div>
   );
-};
+}
 
 export default BotList;

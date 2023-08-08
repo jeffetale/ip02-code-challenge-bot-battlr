@@ -1,15 +1,19 @@
-// src/Components/BotList.js
 import React from "react";
 import BotCard from "./BotCard";
+import { Container, Row, Col } from "react-bootstrap";
 
 function BotList({ bots, onAddToFavourites }) {
   return (
-    <div>
+    <Container>
       <h2>Bot Collection</h2>
-      {bots.map((bot) => (
-        <BotCard key={bot.id} bot={bot} onAddToFavourites={onAddToFavourites} />
-      ))}
-    </div>
+      <Row>
+        {bots.map((bot) => (
+          <Col md={4} className="mb-4">
+            <BotCard key={bot.id} bot={bot} onAddToFavourites={onAddToFavourites} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

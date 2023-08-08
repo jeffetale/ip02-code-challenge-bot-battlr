@@ -1,5 +1,6 @@
 // src/Components/BotCard.js
 import React from "react";
+import { Card, Button } from "react-bootstrap";
 
 function BotCard({ bot, onAddToFavourites, onRemoveFromFavourites }) {
   const {
@@ -26,30 +27,45 @@ function BotCard({ bot, onAddToFavourites, onRemoveFromFavourites }) {
   }
 
   return (
-    <div>
-      <img src={avatar_url} alt={name} />
-      <h3>{name}</h3>
-      <p>Health: {health}</p>
-      <p>Damage: {damage}</p>
-      <p>Armor: {armor}</p>
-      <p>Class: {bot_class}</p>
-      <p>Catchphrase: {catchphrase}</p>
-      {onAddToFavourites && <button onClick={handleAddClick}>Enlist</button>}
-      {onRemoveFromFavourites && (
-        <>
-          <button onClick={handleRemoveClick}>Remove</button>
-          <button
-            onClick={() =>
-              fetch(`https://trendsserver.onrender.com/bots/${id}`, {
-                method: "DELETE",
-              })
-            }
-          >
-            Discharge from collection
-          </button>
-        </>
-      )}
-    </div>
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={avatar_url} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+          Health: {health}
+          <br />
+          Damage: {damage}
+          <br />
+          Armor: {armor}
+          <br />
+          Class: {bot_class}
+          <br />
+          Catchphrase: {catchphrase}
+        </Card.Text>
+        {onAddToFavourites && (
+          <Button variant="primary" onClick={handleAddClick}>
+            Enlist
+          </Button>
+        )}
+        {onRemoveFromFavourites && (
+          <>
+            <Button variant="danger" onClick={handleRemoveClick}>
+              Remove
+            </Button>
+            <Button
+              variant="warning"
+              onClick={() =>
+                fetch(`https://trendsserver.onrender.com/bots/${id}`, {
+                  method: "DELETE",
+                })
+              }
+            >
+              Discharge from collection
+            </Button>
+          </>
+        )}
+      </Card.Body>
+    </Card>
   );
 }
 

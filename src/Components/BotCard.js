@@ -50,7 +50,7 @@ function BotCard({ bot, onAddToFavourites, onRemoveFromFavourites }) {
         {onRemoveFromFavourites && (
           <>
             <Button variant="danger" onClick={handleRemoveClick}>
-              Remove
+              Remove from Favourites
             </Button>
             <Button
               variant="warning"

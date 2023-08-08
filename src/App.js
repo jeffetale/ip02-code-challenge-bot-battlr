@@ -37,7 +37,7 @@ function App() {
       {selectedBot ? (
         <BotSpecs bot={selectedBot} onEnlist={() => handleAddToFavourites(selectedBot)} onBack={handleBack} />
       ) : (
-        <BotList bots={bots} onSelect={handleSelectBot} />
+        <BotList bots={bots} onSelect={handleSelectBot} onAddToFavourites={handleAddToFavourites} />
       )}
       <BotFavourite favouriteBots={favouriteBots} onRemoveFromFavourites={handleRemoveFromFavourites} />
     </div>
